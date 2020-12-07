@@ -1,6 +1,13 @@
 require('dotenv').config();
 
 module.exports = {
+  siteMetadata: {
+    title: 'Jerome De Wulf Portfolio',
+    description:
+      "Hi, I'm a front-end developer from Antwerp. Take a look at my portfolio.",
+    author: 'Jerome De Wulf',
+    siteUrl: 'https://jeromedewulf-gatsby-portfolio.web.app/'
+  },
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',

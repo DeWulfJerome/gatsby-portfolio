@@ -114,7 +114,9 @@ export default function Pathfinding() {
             <Button
               text="Check it out"
               onButtonClick={() => {
-                window.open('https://pathfinding.jeromedewulf.be');
+                if (typeof window !== `undefined`) {
+                  window.open('https://pathfinding.jeromedewulf.be');
+                }
               }}
             ></Button>
           </StyledTextContainer>

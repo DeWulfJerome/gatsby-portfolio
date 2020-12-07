@@ -18,13 +18,17 @@ export default function PointCloud() {
   const [animationId, setAnimationId] = useState(undefined);
 
   useEffect(() => {
-    if (animationId) {
+    if (animationId && typeof window !== `undefined`) {
       window.cancelAnimationFrame(animationId);
     }
     const canvas = canvasEl.current;
 
-    canvas.width = tabletSizeReached ? window.innerWidth : 1200;
-    canvas.height = window.innerHeight - 120;
+    canvas.width =
+      tabletSizeReached && typeof window !== `undefined`
+        ? window.innerWidth
+        : 1200;
+    canvas.height =
+      typeof window !== `undefined` ? window.innerHeight - 120 : 1000;
     const gl = canvas.getContext('webgl');
     if (!gl) {
       return;

@@ -172,7 +172,9 @@ const WebsiteSlide = ({ siteData }) => {
           {siteData.buttonText && (
             <Button
               onButtonClick={() => {
-                window.open(siteData.buttonUrl);
+                if (typeof window !== `undefined`) {
+                  window.open(siteData.buttonUrl);
+                }
               }}
               text={siteData.buttonText}
             ></Button>
@@ -181,7 +183,7 @@ const WebsiteSlide = ({ siteData }) => {
       </div>
       <StyledBrowserContainer
         onClick={() => {
-          if (phoneQueryMatches) {
+          if (phoneQueryMatches && typeof window !== `undefined`) {
             window.open(siteData.buttonUrl);
           }
         }}

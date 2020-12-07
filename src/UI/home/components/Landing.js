@@ -18,14 +18,20 @@ const StyledLandingContainer = styled.div`
 `;
 
 export default function Landing() {
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [windowHeight, setWindowHeight] = useState(
+    typeof window !== `undefined` ? window.innerHeight : 0
+  );
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      setWindowHeight(window.innerHeight);
-    });
+    if (typeof window !== `undefined`) {
+      window.addEventListener('resize', () => {
+        setWindowHeight(window.innerHeight);
+      });
+    }
 
-    return window.removeEventListener('resize', window);
+    return typeof window !== `undefined`
+      ? window.removeEventListener('resize', window)
+      : undefined;
   }, [windowHeight]);
   return (
     <section>
