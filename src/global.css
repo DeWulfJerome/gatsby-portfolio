@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: acumin-pro, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: acumin-pro, sans-serif;
+}
+
+.carouselProvider .carouselSlider {
+  overflow: unset;
+}
+
+.carouselProvider .carouselSlider li {
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel__slide--hidden {
+  filter: blur(7px);
+  opacity: 0.25;
+  transform: scale(0.8);
+}
+
+.dotGroup {
+  text-align: center;
+}
+
+.dotGroup button {
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  border: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0.2rem;
+  background: rgba(255, 255, 255, 0.43);
+}
+
+.dotGroup button.carousel__dot--selected {
+  background: rgba(255, 255, 255, 0.69);
+}
+
+.social-icon {
+  color: #061444;
+  height: 20px;
+  padding-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icon-white {
+  color: #fff;
+}
