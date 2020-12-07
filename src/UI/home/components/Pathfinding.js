@@ -11,6 +11,8 @@ import Phone from '../../general/components/Phone';
 import Browser from '../../general/components/Browser';
 import pathfindingPhone from '../../../assets/media/pathfindingPhone.png';
 import pathfindingBrowser from '../../../assets/media/pathfindingBrowser.png';
+import Img from 'gatsby-plugin-image';
+import { graphQl } from 'gatsby';
 import GeneralStyles from '../../../assets/styles/general-styles';
 import GithubLogo from '../../../svg/githubLogo.svg';
 
@@ -90,7 +92,8 @@ const StyledAnchor = styled.a`
   }
 `;
 
-export default function Pathfinding() {
+export default function Pathfinding({ data }) {
+  console.log(data);
   return (
     <section id="Portfolio">
       <Gridcontainer>
@@ -123,9 +126,10 @@ export default function Pathfinding() {
           <div>
             <StyledBrowserContainer>
               <Browser>
-                <StyledBrowserImage
+                {/* <StyledBrowserImage
                   src={pathfindingBrowser}
-                ></StyledBrowserImage>
+                ></StyledBrowserImage> */}
+                {/* <Img fluid={data.browserImage}></Img> */}
               </Browser>
             </StyledBrowserContainer>
             <StyledPhoneContainer>
@@ -141,3 +145,15 @@ export default function Pathfinding() {
     </section>
   );
 }
+
+export const query = graphql`
+  query browserImageQuery {
+    browserImage: file(relativePath: { eq: "pathfindingBrowser.png" }) {
+      childImageSharp {
+        fixed(width: 125, height: 125) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`;
