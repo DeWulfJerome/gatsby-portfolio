@@ -24,6 +24,9 @@ export default function Landing() {
 
   useEffect(() => {
     if (typeof window !== `undefined`) {
+      if (windowHeight === 0) {
+        setWindowHeight(window.innerHeight);
+      }
       window.addEventListener('resize', () => {
         setWindowHeight(window.innerHeight);
       });
