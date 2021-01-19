@@ -70,12 +70,14 @@ export default function About() {
               Be sure to get in touch!
             </P>
             <Spacer size={SpacerSize.small}></Spacer>
-            <Button
-              text="Get in touch"
-              onButtonClick={() => {
-                console.log('get in toch');
-              }}
-            ></Button>
+            <a href="mailto:dewulf.jerome@gmail.com">
+              <Button
+                text="Get in touch"
+                onButtonClick={() => {
+                  console.log('get in toch');
+                }}
+              ></Button>
+            </a>
             <Spacer size={phoneQueryMatches ? SpacerSize.large : '0'}></Spacer>
           </StyledColumn>
           <StyledColumn center>

@@ -10,7 +10,7 @@ import PointCloud from './PointCloud';
 import GridOverlay from '../../general/components/GridOverlay';
 
 const StyledLandingContainer = styled.div`
-  min-height: ${(props) => props.windowHeight - 120 + 'px'};
+  min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,40 +18,19 @@ const StyledLandingContainer = styled.div`
 `;
 
 export default function Landing() {
-  const [windowHeight, setWindowHeight] = useState(
-    typeof window !== `undefined` ? window.innerHeight : 0
-  );
-
-  useEffect(() => {
-    if (typeof window !== `undefined`) {
-      if (windowHeight === 0) {
-        setWindowHeight(window.innerHeight);
-      }
-      window.addEventListener('resize', () => {
-        setWindowHeight(window.innerHeight);
-      });
-    }
-
-    return typeof window !== `undefined`
-      ? window.removeEventListener('resize', window)
-      : undefined;
-  }, [windowHeight]);
   return (
     <section>
       <Gridcontainer>
-        <StyledLandingContainer windowHeight={windowHeight}>
+        <StyledLandingContainer>
           <div>
             <H3>Hi I'm</H3>
             <H1>Jerome De Wulf</H1>
             <P>I build digital solutions.</P>
             <P>#codedogsandguitar</P>
             <Spacer size={SpacerSize.medium}></Spacer>
-            <Button
-              text="Get in touch"
-              onButtonClick={() => {
-                console.log('clicked');
-              }}
-            ></Button>
+            <a href="mailto:dewulf.jerome@gmail.com">
+              <Button text="Get in touch"></Button>
+            </a>
           </div>
           <PointCloud></PointCloud>
         </StyledLandingContainer>
