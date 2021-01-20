@@ -8,46 +8,7 @@ import P from './P';
 import Button from './Button';
 import Spacer, { SpacerSize } from './Spacer';
 import { useMediaQuery } from '@react-hook/media-query';
-
-import leroux from '../../../assets/media/leroux.jpg';
-import makeawish from '../../../assets/media/makeawish.jpg';
-import ugly from '../../../assets/media/ugly.jpg';
-
-const websites = [
-  {
-    title: 'Stephane Leroux',
-    content: [
-      'Website for a Belgian chocolate artist',
-      'Design & Development @ Flux'
-    ],
-    buttonText: 'Take a look',
-    buttonUrl: 'https://fluxwebdesign3.be/customer/leroux/',
-    browserImage: leroux
-  },
-  {
-    title: 'Ugly',
-    content: [
-      'Website for an Antwerp based real estate agency',
-      'Online booking of visits',
-      'Custom integration with their ERP',
-      'Design & Development @ Flux'
-    ],
-    buttonText: 'Take a look',
-    buttonUrl: 'https://ugly.be',
-    browserImage: ugly
-  },
-  {
-    title: 'Make A Wish',
-    content: [
-      'Website for the Flandrian division of Make A Wish',
-      'Webshop and custom donation module with Mollie',
-      'Design & Development @ Flux'
-    ],
-    buttonText: 'Take a look',
-    buttonUrl: 'https://makeawish.be/home',
-    browserImage: makeawish
-  }
-];
+import { graphql, useStaticQuery } from 'gatsby';
 
 export default function WebsiteSlider() {
   const smallLaptopQueryMatches = useMediaQuery(
@@ -60,6 +21,29 @@ export default function WebsiteSlider() {
   const phoneQueryMatches = useMediaQuery('only screen and (max-width: 768px)');
   const [sliderWidth, setsliderWidth] = useState(800);
   const [sliderHeight, setsliderHeight] = useState(450);
+
+  const websiteData = useStaticQuery(graphql`
+    {
+      allSanityWebsites {
+        edges {
+          node {
+            name
+            websiteUrl
+            body {
+              children {
+                text
+              }
+            }
+            mainImage {
+              asset {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
 
   useEffect(() => {
     let widthToSet = 800;
@@ -86,13 +70,18 @@ export default function WebsiteSlider() {
         className="carouselProvider"
         naturalSlideWidth={sliderWidth}
         naturalSlideHeight={sliderHeight}
-        totalSlides={websites.length}
+        totalSlides={websiteData.allSanityWebsites.edges.length}
       >
         <Slider className="carouselSlider">
-          {websites.map((site, index) => {
+          {websiteData.allSanityWebsites.edges.map(({ node }, index) => {
             return (
               <Slide key={index} index={index}>
-                <WebsiteSlide siteData={site}></WebsiteSlide>
+                <WebsiteSlide
+                  name={node.name}
+                  websiteUrl={node.websiteUrl}
+                  body={node.body}
+                  mainImageUrl={node.mainImage.asset.url}
+                ></WebsiteSlide>
               </Slide>
             );
           })}
@@ -156,27 +145,27 @@ const StyledBrowserImage = styled.img`
   }
 `;
 
-const WebsiteSlide = ({ siteData }) => {
+const WebsiteSlide = ({ name, websiteUrl, body, mainImageUrl }) => {
   const phoneQueryMatches = useMediaQuery('only screen and (max-width: 768px)');
   return (
     <StyledWebsiteSlide>
       <div>
         <Spacer size={'22rem'}></Spacer>
         <StyledCard>
-          <H3>{siteData.title}</H3>
+          <H3>{name}</H3>
           <Spacer size={SpacerSize.small}></Spacer>
-          {siteData.content.map((line, index) => {
-            return <P key={index}>{line}</P>;
+          {body.map(({ children }, index) => {
+            return <P key={index}>{children[0].text}</P>;
           })}
           <Spacer size={SpacerSize.small}></Spacer>
-          {siteData.buttonText && (
+          {websiteUrl && (
             <Button
               onButtonClick={() => {
                 if (typeof window !== `undefined`) {
-                  window.open(siteData.buttonUrl);
+                  window.open(websiteUrl);
                 }
               }}
-              text={siteData.buttonText}
+              text={'Take a look'}
             ></Button>
           )}
         </StyledCard>
@@ -184,12 +173,12 @@ const WebsiteSlide = ({ siteData }) => {
       <StyledBrowserContainer
         onClick={() => {
           if (phoneQueryMatches && typeof window !== `undefined`) {
-            window.open(siteData.buttonUrl);
+            window.open(websiteUrl);
           }
         }}
       >
         <Browser small>
-          <StyledBrowserImage src={siteData.browserImage}></StyledBrowserImage>
+          <StyledBrowserImage src={mainImageUrl}></StyledBrowserImage>
         </Browser>
       </StyledBrowserContainer>
     </StyledWebsiteSlide>
