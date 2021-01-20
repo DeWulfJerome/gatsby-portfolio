@@ -48,6 +48,14 @@ module.exports = {
           include: /svg/
         }
       }
+    },
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: 'syo2cixj',
+        dataset: 'production',
+        token: process.env.SANITY_TOKEN
+      }
     }
   ]
 };
