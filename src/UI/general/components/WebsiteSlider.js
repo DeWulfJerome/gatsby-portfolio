@@ -178,7 +178,10 @@ const WebsiteSlide = ({ name, websiteUrl, body, mainImageUrl }) => {
         }}
       >
         <Browser small>
-          <StyledBrowserImage src={mainImageUrl}></StyledBrowserImage>
+          <StyledBrowserImage
+            src={mainImageUrl}
+            alt={`Home page for ${name}`}
+          ></StyledBrowserImage>
         </Browser>
       </StyledBrowserContainer>
     </StyledWebsiteSlide>

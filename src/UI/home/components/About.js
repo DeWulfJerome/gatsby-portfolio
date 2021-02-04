@@ -81,7 +81,10 @@ export default function About() {
             <Spacer size={phoneQueryMatches ? SpacerSize.large : '0'}></Spacer>
           </StyledColumn>
           <StyledColumn center>
-            <StyledImage src={me}></StyledImage>
+            <StyledImage
+              src={me}
+              alt="Image of man and dog in front of the MAS in Antwerp"
+            ></StyledImage>
             <Spacer size={phoneQueryMatches ? SpacerSize.huge : '0'}></Spacer>
           </StyledColumn>
         </StyledRow>

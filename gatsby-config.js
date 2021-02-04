@@ -6,7 +6,7 @@ module.exports = {
     description:
       "Hi, I'm a front-end developer from Antwerp. Take a look at my portfolio.",
     author: 'Jerome De Wulf',
-    siteUrl: 'https://jeromedewulf-gatsby-portfolio.web.app/'
+    siteUrl: 'https://jeromedewulf.be/'
   },
   plugins: [
     'gatsby-plugin-styled-components',
@@ -55,6 +55,13 @@ module.exports = {
         projectId: 'syo2cixj',
         dataset: 'production',
         token: process.env.SANITY_TOKEN
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://jeromedewulf.be',
+        policy: [{ userAgent: '*', allow: '/' }]
       }
     }
   ]
