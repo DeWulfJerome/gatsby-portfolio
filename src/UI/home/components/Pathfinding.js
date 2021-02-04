@@ -125,12 +125,16 @@ export default function Pathfinding() {
               <Browser>
                 <StyledBrowserImage
                   src={pathfindingBrowser}
+                  alt="Home page for https://pathfinding.jeromedewulf.be"
                 ></StyledBrowserImage>
               </Browser>
             </StyledBrowserContainer>
             <StyledPhoneContainer>
               <Phone>
-                <StyledPhoneImage src={pathfindingPhone}></StyledPhoneImage>
+                <StyledPhoneImage
+                  src={pathfindingPhone}
+                  alt="Mobile homepage for https://pathfinding.jeromedewulf.be"
+                ></StyledPhoneImage>
               </Phone>
             </StyledPhoneContainer>
           </div>
