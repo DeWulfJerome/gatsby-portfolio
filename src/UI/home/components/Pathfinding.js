@@ -13,6 +13,7 @@ import pathfindingPhone from '../../../assets/media/pathfindingPhone.png';
 import pathfindingBrowser from '../../../assets/media/pathfindingBrowser.png';
 import GeneralStyles from '../../../assets/styles/general-styles';
 import GithubLogo from '../../../svg/githubLogo.svg';
+import { navigate } from 'gatsby';
 
 const StyledRow = styled.div`
   display: flex;
@@ -114,9 +115,7 @@ export default function Pathfinding() {
             <Button
               text="Check it out"
               onButtonClick={() => {
-                if (typeof window !== `undefined`) {
-                  window.open('https://pathfinding.jeromedewulf.be');
-                }
+                navigate('/pathfinding');
               }}
             ></Button>
           </StyledTextContainer>
