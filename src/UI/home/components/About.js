@@ -64,11 +64,11 @@ export default function About() {
               with React, React-native, Angular and Wordpress.
             </P>
             <P>Sometimes I dabble with Python or PHP</P>
-            <Spacer size={SpacerSize.small}></Spacer>
+            {/* <Spacer size={SpacerSize.small}></Spacer>
             <P>
               Occasionally I'm open to freelance work. Need help with a project?
               Be sure to get in touch!
-            </P>
+            </P> */}
             <Spacer size={SpacerSize.small}></Spacer>
             <a href="mailto:dewulf.jerome@gmail.com">
               <Button

@@ -74,10 +74,11 @@ export default function DistanceTracker() {
               When the smartwatch app I used to measure distance to the pin
             </P>
             <P darkBackground>
-              on the golf course became pay to use, I decided to create
+              on the golf course became pay to use, I decided to create my own
+              app.
             </P>
             <P darkBackground>
-              my own app. It uses location tracking to calculate the distance to
+              It uses location tracking to calculate the distance to
             </P>
             <P darkBackground>set points on my home golf course.</P>
             <Spacer size={SpacerSize.small}></Spacer>
