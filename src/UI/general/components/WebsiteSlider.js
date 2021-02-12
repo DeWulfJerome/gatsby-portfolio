@@ -100,8 +100,9 @@ const StyledCard = styled.div`
   );
   border-radius: 40px;
   box-sizing: border-box;
-  padding: 3rem;
+  padding: 2rem;
   min-width: 350px;
+  max-width: 650px;
 
   @media (max-width: 768px) {
     display: none;
