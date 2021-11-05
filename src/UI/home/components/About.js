@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import Button from '../../general/components/Button';
-import Gridcontainer from '../../general/components/Gridcontainer';
-import GridOverlay from '../../general/components/GridOverlay';
-import H3 from '../../general/components/H3';
-import P from '../../general/components/P';
-import SectionHeader from '../../general/components/SectionHeader';
-import Spacer, { SpacerSize } from '../../general/components/Spacer';
-import me from '../../../assets/media/me.jpeg';
-import { useMediaQuery } from '@react-hook/media-query';
+import React from "react";
+import styled from "styled-components";
+import Button from "../../general/components/Button";
+import Gridcontainer from "../../general/components/Gridcontainer";
+import GridOverlay from "../../general/components/GridOverlay";
+import H3 from "../../general/components/H3";
+import P from "../../general/components/P";
+import SectionHeader from "../../general/components/SectionHeader";
+import Spacer, { SpacerSize } from "../../general/components/Spacer";
+import me from "../../../assets/media/me.jpeg";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const StyledRow = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const StyledColumn = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    text-align: ${(props) => (props.center ? 'center' : 'left')};
+    text-align: ${(props) => (props.center ? "center" : "left")};
   }
 `;
 
@@ -48,22 +48,23 @@ const StyledImage = styled.img`
 `;
 
 export default function About() {
-  const phoneQueryMatches = useMediaQuery('only screen and (max-width: 768px)');
+  const phoneQueryMatches = useMediaQuery("only screen and (max-width: 768px)");
   return (
     <section id="About">
       <Gridcontainer>
-        <Spacer size={'5rem'}></Spacer>
+        <Spacer size={"5rem"}></Spacer>
         <StyledRow>
-          <Spacer size={phoneQueryMatches ? '5rem' : '35rem'}></Spacer>
+          <Spacer size={phoneQueryMatches ? "5rem" : "35rem"}></Spacer>
           <SectionHeader>About</SectionHeader>
           <StyledColumn>
             <H3>About me</H3>
             <P>
               I'm a no nonsense problem solver from Antwerp currently working as
-              a frontend developer at Freebility. I have professional experience
-              with React, React-native, Angular and Wordpress.
+              a Cyber Physical Systems Engineer at Atlas Copco. I have
+              professional experience with React, React-native, Angular and
+              Wordpress.
             </P>
-            <P>Sometimes I dabble with Python or PHP</P>
+            <P>Sometimes I dabble with Python, NodeJS or PHP</P>
             {/* <Spacer size={SpacerSize.small}></Spacer>
             <P>
               Occasionally I'm open to freelance work. Need help with a project?
@@ -74,18 +75,18 @@ export default function About() {
               <Button
                 text="Get in touch"
                 onButtonClick={() => {
-                  console.log('get in toch');
+                  console.log("get in toch");
                 }}
               ></Button>
             </a>
-            <Spacer size={phoneQueryMatches ? SpacerSize.large : '0'}></Spacer>
+            <Spacer size={phoneQueryMatches ? SpacerSize.large : "0"}></Spacer>
           </StyledColumn>
           <StyledColumn center>
             <StyledImage
               src={me}
               alt="Image of man and dog in front of the MAS in Antwerp"
             ></StyledImage>
-            <Spacer size={phoneQueryMatches ? SpacerSize.huge : '0'}></Spacer>
+            <Spacer size={phoneQueryMatches ? SpacerSize.huge : "0"}></Spacer>
           </StyledColumn>
         </StyledRow>
         <GridOverlay></GridOverlay>
